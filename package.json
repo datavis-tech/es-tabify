@@ -1,0 +1,23 @@
+{
+  "name": "es-tabify",
+  "version": "0.0.1",
+  "description": "A function that converts ElasticSearch results into a table data structure.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datavis-tech/es-tabify.git"
+  },
+  "keywords": [
+    "ElasticSearch",
+    "D3"
+  ],
+  "author": "Curran Kelleher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/datavis-tech/es-tabify/issues"
+  },
+  "homepage": "https://github.com/datavis-tech/es-tabify#readme"
+}
