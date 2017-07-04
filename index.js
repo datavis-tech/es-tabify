@@ -44,7 +44,7 @@ function collectBucket(node, stack=[]) {
         const key = keys[i];
         const value = node[key];
 
-        if (typeof value === 'object') {
+        if (typeof value === 'object' && value !== null) {
 
             if ("hits" in value && Array.isArray(value.hits) && value.hits.length === 1) {
                 if ("sort" in value.hits[0]) {
