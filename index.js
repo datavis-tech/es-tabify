@@ -3,8 +3,13 @@
   returned from an ElasticSearch query into a tabular
   data structure represented as an array of row objects.
 */
-function tabify(response) {
+function tabify(response, options) {
     let table;
+    if (typeof (options) === 'undefined') {
+        options = {
+            debug: false
+        }
+    }
 
     if (response.aggregations) {
         const tree = collectBucket(response.aggregations);
@@ -20,7 +25,7 @@ function tabify(response) {
         throw new Error("Tabify() invoked with invalid result set. Result set must have either 'aggregations' or 'hits' defined.");
     }
 
-    if (process.env.NODE_ENV === "development") {
+    if (options.debug) {
         console.log("Results from tabify (first 3 rows only):");
 
         // This one shows where there are "undefined" values.
