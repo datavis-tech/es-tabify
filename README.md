@@ -24,3 +24,13 @@ client.search({
   console.trace(error.message);
 });
 ```
+
+# Options
+
+Pass in configuration options via object key/value.
+
+```
+var options = { debug: true };
+var data = tabify(response, options);
+```
+* debug: (true | false:default) enable output debuging
