@@ -1,6 +1,6 @@
 {
   "name": "es-tabify",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A function that converts ElasticSearch results into a table data structure.",
   "main": "index.js",
   "scripts": {
