@@ -41,16 +41,14 @@ function tabify(response, options) {
 function collectBucket(node, stack=[]) {
     if (!node)
         return;
-
+    
     const keys = Object.keys(node);
-
+    
     // Use old school `for` so we can break control flow by returning.
     for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
         const value = node[key];
-
         if (typeof value === 'object' && value !== null) {
-
             if ("hits" in value && Array.isArray(value.hits) && value.hits.length === 1) {
                 if ("sort" in value.hits[0]) {
                     value.hits[0]._source['sort'] = value.hits[0].sort[0];
@@ -67,7 +65,13 @@ function collectBucket(node, stack=[]) {
             {
                 return extractBuckets(value, [...stack, key]);
             }
+
             return collectBucket(value, [...stack, key]);
+        }
+
+        if (key === "value" && typeof value !== "object" && stack.length === 1) {
+            let collectedObject = collectBucket({[stack[0]]: value});
+            node = collectedObject;
         }
     }
 
@@ -110,9 +114,9 @@ function extractTree(buckets, stack) {
             if(key === "key"){
                 key = stack[stack.length - 2]
             }
-
+            
             tree[key] = value;
-
+        
             return tree;
         }, {});
     });
